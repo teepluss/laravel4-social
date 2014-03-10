@@ -1,6 +1,10 @@
 {
     "name": "teepluss/social",
-    "description": "",
+    "description": "Laravel 4 Social Wrapper",
+    "keywords": ["laravel", "laravel4", "social", "facebook", "instagram"],
+    "homepage": "https://github.com/teepluss/laravel4-Social",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Teepluss",
