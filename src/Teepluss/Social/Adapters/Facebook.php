@@ -67,27 +67,42 @@ class Facebook extends BaseFacebook {
 		return $data;
 	}
 	
-	public function getPhotos($pageId = null)
+	public function getPhotos($objectId = null, array $options = array())
 	{
-		if (empty($pageId))
-		{
-			$endpoints = '/me';
-		}
-		else
-		{
-			$endpoints = '/'.$pageId;
-		}
+	
+		$defaults = array(
+			'type'   => 'uploaded',
+			'fields' => 'id,name,picture,source',
+			'limit'  => 25,
+			'after'  => null,
+			'before' => null
+		);
 		
-		$endpoints .= '/photos';
+		$options = array_merge($defaults, $options);
+		
+		$endpoints = '/'.(empty($objectId) ? 'me' : $objectId).'/photos?'.http_build_query($options);
 		
 		try
 		{
 			
 			$photos = $this->api($endpoints);
 			
-			$data = array();
+			$data = array(
+				'data'   => array(),
+				'paging' => array()
+			);
 			
-			sd($photos);
+			$data['paging'] = $photos['paging']['cursors'];
+			
+			foreach ($photos['data'] as $photo)
+			{
+				$data['data'][] = array(
+					'id'        => $photo['id'],
+					'name'      => array_get($photo, 'name', null),
+					'thumbnail' => $photo['picture'],
+					'picture'   => $photo['source']
+				);
+			}
 			
 		}
 		catch (\FacebookApiException $e)
@@ -99,11 +114,50 @@ class Facebook extends BaseFacebook {
 		
 	}
 	
-	
-	public function test()
+	public function getAlbums($objectId = null, array $options = array())
 	{
-		$name = 'name';
-		return 'name';
+	
+		$defaults = array(
+			'fields' => 'id,name,cover_photo,count',
+			'limit'  => 25,
+			'after'  => null,
+			'before' => null
+		);
+		
+		$options = array_merge($defaults, $options);
+		
+		$endpoints = '/'.(empty($objectId) ? 'me' : $objectId).'/albums?'.http_build_query($options);
+		
+		try
+		{
+			
+			$albums = $this->api($endpoints);
+			
+			$data = array(
+				'data'   => array(),
+				'paging' => array()
+			);
+			
+			$data['paging'] = $albums['paging']['cursors'];
+			
+			foreach ($albums['data'] as $album)
+			{
+				$data['data'][] = array(
+					'id'          => $album['id'],
+					'name'        => array_get($album, 'name', null),
+					'count'       => $album['count'],
+					'thumbnail'   => 'https://graph.facebook.com/'.$album['id'].'/picture?type=album&access_token='.$this->getAccessToken()
+				);
+			}
+			
+		}
+		catch (\FacebookApiException $e)
+		{
+			//throw new SocialException($e->getMessage());
+		}
+		
+		return $data;
+		
 	}
 	
 }
