@@ -22,6 +22,7 @@ class Social {
 			switch ($adapter)
 			{
 				case 'facebook' : $instance = new Adapters\Facebook($config); break;
+				case 'instagram': $instance = new Adapters\Instagram($config); break;
 			}
 		
 			static::$instance[$adapter] = $instance;
