@@ -96,4 +96,17 @@ class Instagram extends BaseInstagram {
 		return $data;
 		
 	}
+	
+	public function getAlbums()
+	{
+		return array(
+			'data'   => array(),
+			'paging' => array()
+		);
+	}
+	
+	public function getPages()
+	{
+		return array();
+	}
 }
