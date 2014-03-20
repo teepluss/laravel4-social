@@ -32,6 +32,7 @@ class Instagram extends BaseInstagram {
 				'first_name' => $first_name,
 				'last_name'  => $last_name,
 				'email'      => null,
+				'picture'    => $user->profile_picture,
 			);
 		}
 		catch (\Instagram\Core\ApiException $e)
