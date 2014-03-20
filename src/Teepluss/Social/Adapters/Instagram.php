@@ -82,7 +82,7 @@ class Instagram extends BaseInstagram {
 			{
 				$data['data'][] = array(
 					'id'        => $photo->id,
-					'name'      => $photo->caption,
+					'name'      => $photo->caption->text,
 					'thumbnail' => $photo->images->thumbnail->url,
 					'picture'   => $photo->images->standard_resolution->url
 				);
