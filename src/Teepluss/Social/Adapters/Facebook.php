@@ -18,7 +18,7 @@ class Facebook extends BaseFacebook {
 		
 		$options = array_merge($defaults, $options);
 	
-		$data = null;
+		$data = array();
 		
 		try 
 		{
@@ -45,7 +45,7 @@ class Facebook extends BaseFacebook {
 	{
 		//$access_token = \Input::get('access_token');
 		//$this->setAccessToken($access_token);
-		$data = null;
+		$data = array();
 		
 		try
 		{
@@ -87,7 +87,7 @@ class Facebook extends BaseFacebook {
 		
 		$endpoints = '/'.(empty($objectId) ? 'me' : $objectId).'/photos?'.http_build_query($options);
 		
-		$data = null;
+		$data = array();
 		
 		try
 		{
@@ -135,7 +135,7 @@ class Facebook extends BaseFacebook {
 		
 		$endpoints = '/'.(empty($objectId) ? 'me' : $objectId).'/albums?'.http_build_query($options);
 		
-		$data = null;
+		$data = array();
 		
 		try
 		{

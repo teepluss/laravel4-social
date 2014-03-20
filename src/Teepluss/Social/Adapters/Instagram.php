@@ -16,7 +16,7 @@ class Instagram extends BaseInstagram {
 	
 	public function getUser($id = null)
 	{
-		$data = null;
+		$data = array();
 		
 		try 
 		{
@@ -55,7 +55,7 @@ class Instagram extends BaseInstagram {
 		
 		$options = array_merge($defaults, $options);
 		
-		$data = null;
+		$data = array();
 		
 		// Fix options;
 		$options['count'] = $options['limit'];
