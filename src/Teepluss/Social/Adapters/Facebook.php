@@ -10,15 +10,19 @@ class Facebook extends BaseFacebook {
 		parent::__construct($config);
 	}
 	
-	public function getUser()
+	public function getUser(array $options = array())
 	{
-		//$access_token = \Input::get('access_token');
-		//$this->setAccessToken($access_token);
+		$defaults = array(
+			'fields' => 'id,name,first_name,last_name,email,picture.type(large)',
+		);
+		
+		$options = array_merge($defaults, $options);
+	
 		$data = null;
 		
 		try 
 		{
-			$user = $this->api('/me');
+			$user = $this->api('/me', $options);
 		
 			$data = array(
 				'uid'        => $user['id'],
@@ -26,6 +30,7 @@ class Facebook extends BaseFacebook {
 				'first_name' => $user['first_name'],
 				'last_name'  => $user['last_name'],
 				'email'      => $user['email'],
+				'picture'    => $user['picture']['data']['url']
 			);
 		}
 		catch (\FacebookApiException $e)
