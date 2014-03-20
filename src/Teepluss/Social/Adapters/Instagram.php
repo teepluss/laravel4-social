@@ -55,6 +55,8 @@ class Instagram extends BaseInstagram {
 		
 		$options = array_merge($defaults, $options);
 		
+		$data = null;
+		
 		// Fix options;
 		$options['count'] = $options['limit'];
 		$options['max_id'] = $options['after'];
