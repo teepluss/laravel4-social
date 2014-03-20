@@ -82,12 +82,11 @@ class Instagram extends BaseInstagram {
 			{
 				$data['data'][] = array(
 					'id'        => $photo->id,
-					'name'      => $photo->caption->text,
+					'name'      => is_object($photo->caption) ? $photo->caption->text : $photo->caption,
 					'thumbnail' => $photo->images->thumbnail->url,
 					'picture'   => $photo->images->standard_resolution->url
 				);
 			}
-			
 		}
 		catch (\Instagram\Core\ApiException $e)
 		{
