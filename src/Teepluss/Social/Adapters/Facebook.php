@@ -13,7 +13,7 @@ class Facebook extends BaseFacebook {
 	public function getUser(array $options = array())
 	{
 		$defaults = array(
-			'fields' => 'id,name,first_name,last_name,email,picture.type(large)',
+			'fields' => 'id,name,first_name,last_name,email,picture.type(large),username',
 		);
 		
 		$options = array_merge($defaults, $options);
