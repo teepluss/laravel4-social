@@ -28,6 +28,7 @@ class Instagram extends BaseInstagram {
 		
 			$data = array(
 				'uid'        => $user->id,
+				'username'   => $user->username,
 				'name'       => $user->fullname,
 				'first_name' => $first_name,
 				'last_name'  => $last_name,

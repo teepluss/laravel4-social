@@ -26,6 +26,7 @@ class Facebook extends BaseFacebook {
 		
 			$data = array(
 				'uid'        => $user['id'],
+				'username'   => (isset($user['username'])) ? $user['username'] : $user['id'],
 				'name'       => $user['name'],
 				'first_name' => $user['first_name'],
 				'last_name'  => $user['last_name'],
