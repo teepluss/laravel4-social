@@ -100,7 +100,10 @@ class Facebook extends BaseFacebook {
 				'paging' => array()
 			);
 			
-			$data['paging'] = $photos['paging']['cursors'];
+			if (isset($photos['paging']))
+			{
+				$data['paging'] = $photos['paging']['cursors'];
+			}
 			
 			foreach ($photos['data'] as $photo)
 			{
