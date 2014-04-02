@@ -148,7 +148,10 @@ class Facebook extends BaseFacebook {
 				'paging' => array()
 			);
 			
-			$data['paging'] = $albums['paging']['cursors'];
+			if (isset($albums['paging']))
+			{
+				$data['paging'] = $albums['paging']['cursors'];
+			}
 			
 			foreach ($albums['data'] as $album)
 			{
