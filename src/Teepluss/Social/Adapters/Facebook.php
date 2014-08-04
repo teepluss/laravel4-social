@@ -161,7 +161,7 @@ class Facebook extends BaseFacebook {
 				$data['data'][] = array(
 					'id'          => $album['id'],
 					'name'        => array_get($album, 'name', null),
-					'count'       => $album['count'],
+					'count'       => array_get($album, 'count', 0),
 					'thumbnail'   => 'https://graph.facebook.com/'.$album['id'].'/picture?type=album&access_token='.$this->getAccessToken()
 				);
 			}
