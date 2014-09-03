@@ -14,7 +14,7 @@ class Instagram extends BaseInstagram {
 		parent::__construct($access_token, $client);
 	}
 	
-	public function getUser($id = null)
+	public function getMe($id = null)
 	{
 		$data = array();
 		

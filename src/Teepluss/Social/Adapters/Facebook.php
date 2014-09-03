@@ -10,7 +10,7 @@ class Facebook extends BaseFacebook {
 		parent::__construct($config);
 	}
 	
-	public function getUser(array $options = array())
+	public function getMe(array $options = array())
 	{
 		$defaults = array(
 			'fields' => 'id,name,first_name,last_name,email,picture.type(large),username',
